@@ -17,7 +17,8 @@ export class Email {
           }],
           dkim_domain: security.dkim_domain,
           dkim_selector: security.dkim_selector,
-          dkim_private_key: security.dkim_private_key
+          dkim_private_key: security.dkim_private_key,
+          reply_to: details.reply_to
         }],
         from: {
           email: details.from.email,
