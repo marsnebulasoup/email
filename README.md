@@ -58,7 +58,8 @@ AUTH_HEADER = "X-Auth-Token"                        # name of the header you'll 
 AUTH_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"      # make something up here, for your personal authentication
 DKIM_DOMAIN = "example.com"                         # the domain you want to send mail through
 DKIM_PRIVATE_KEY = "..."                            # private key
-DKIM_SELECTOR = "mailchannels"                      # we're sending via mailchannels's free API
+DKIM_SELECTOR = "mailchannels"                      # w̶e̶'r̶e̶ s̶e̶n̶d̶i̶n̶g̶ v̶i̶a̶ m̶a̶i̶l̶c̶h̶a̶n̶n̶e̶l̶s̶'s̶ f̶r̶e̶e̶ A̶P̶I̶  Mailchannels no longer has a free API, you need to set your API key below.
+X-API-KEY = "YOUR_MAILCHANNELS_API_KEY"             
 ```
 
 Deploy:
@@ -98,7 +99,7 @@ Put the contents of `priv_key.txt` in the `DKIM_PRIVATE_KEY` environment variabl
 
 ### Update DNS records
 
-**DKIM record**
+**DKIM record:**
 Create a TXT record in for the domain you are sending emails from. The domain doesn't have to be registered on Cloudflare.
 
 ```
@@ -108,7 +109,7 @@ Content: v=DKIM1;t=s;p=EVERYTHING FROM PUB_KEY.TXT
 
 [More information](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/)
 
-**DMARC record**
+**DMARC record:**
 Create a TXT record 
 ```
 Name: _dmarc
@@ -118,3 +119,16 @@ Content: v=DMARC1; p=reject; rua=mailto:YOUR EMAIL ADDRESS
 Replace YOUR EMAIL ADDRESS with an email address if you'd like to recieve regular reports about emails sent with your domain.
 
 [More information](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/)
+
+**Domain Lockdown:**
+This is required by Mailchannels to authenticate that you have permission to send from your domain.
+
+Create a TXT record under the domain you wish to send mail from:
+```
+Name: _mailchannels
+Content: v=mc1 auth=YOUR_MAILCHANNELS_ACCT_ID
+```
+
+The Account ID can be found at: https://console.mailchannels.net/settings/accountSettings
+
+See also: https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown
