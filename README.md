@@ -80,9 +80,12 @@ If you're keeping these blank, skip the next steps.
 
 ### Generate the keys
 
+> **NOTICE** <br>
+> This does *not* work on Windows natively. It'll produce incorrect keys. If running on windows, use Windows Subsystem for Linux.
+
 Private keys:
 ```
-openssl genrsa -f4 -out private.pem 4096
+openssl genrsa -f4 -out private.pem 2048
 openssl rsa -in private.pem -outform der | openssl base64 -A > priv_key.txt
 ```
 

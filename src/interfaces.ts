@@ -11,8 +11,8 @@ export interface EmailDetails {
   bodyType: string; // e.g. text/html
   body: string,
   reply_to?: {
-    email?: string,
-    name?: string
+    email: string,
+    name: string
   }
 }
 
@@ -31,7 +31,11 @@ export interface EmailRequest {
     }[],
     dkim_domain: string,
     dkim_selector: string,
-    dkim_private_key: string
+    dkim_private_key: string,
+    reply_to?: {
+      email: string,
+      name: string
+    }
   }[],
   from: {
     email: string,
