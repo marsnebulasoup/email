@@ -1,0 +1,18 @@
+# rename to wrangler.toml!
+
+name = "email"
+main = "src/index.ts"
+compatibility_date = "2023-03-02"
+usage_model = "bundled"
+env = { }
+
+[triggers]
+crons = [ ]
+
+[vars]
+AUTH_HEADER = "X-Auth-Token"
+AUTH_TOKEN = "123456789012345678901234567890"       # replace with your own token of your choosing
+DKIM_DOMAIN = "domain_you_are_sending_from.com"
+DKIM_PRIVATE_KEY = "your_private_key_here"          # see readme for how to generate this
+DKIM_SELECTOR = "mailchannels"
+X_API_KEY = "YOUR_MAILCHANNELS_API_KEY"

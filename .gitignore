@@ -2,6 +2,7 @@
 
 wrangler.toml
 
+!example-wrangler.toml
 !src/
 
 !.gitignore
