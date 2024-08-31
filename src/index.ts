@@ -18,7 +18,8 @@ export default {
           const security: EmailSecurity = {
             dkim_domain: env.DKIM_DOMAIN,
             dkim_selector: env.DKIM_SELECTOR,
-            dkim_private_key: env.DKIM_PRIVATE_KEY
+            dkim_private_key: env.DKIM_PRIVATE_KEY,
+            x_api_key: env.X_API_KEY
           }
           const email = new Email(details, security);
 

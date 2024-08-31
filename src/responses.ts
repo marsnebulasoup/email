@@ -1,6 +1,6 @@
 export const ResponseInvalid = () => new Response(JSON.stringify({ errors: ["Invalid request data"] }), {
   status: 400,
-  statusText: "Unauthorized",
+  statusText: "Bad Request",
   headers: {
     "Content-Type": "text/json",
   }

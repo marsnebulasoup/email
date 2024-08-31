@@ -19,7 +19,8 @@ export interface EmailDetails {
 export interface EmailSecurity {
   dkim_domain: string,
   dkim_selector: string,
-  dkim_private_key: string
+  dkim_private_key: string,
+  x_api_key?: string
 }
 
 export interface EmailRequest {
@@ -36,6 +37,10 @@ export interface EmailRequest {
     email: string,
     name: string,
   },
+  reply_to: {
+    email: string,
+    name: string
+  },
   subject: string,
   content: {
     type: string,
@@ -50,4 +55,5 @@ export interface Environment {
   DKIM_DOMAIN: string,
   DKIM_SELECTOR: string,
   DKIM_PRIVATE_KEY: string,
+  X_API_KEY: string
 }
