@@ -12,11 +12,14 @@ export class Email {
     try {
       this.xApiKey = security.x_api_key;
       this.request = {
+        attachments: details.attachments,
         personalizations: [{
           to: [{
             email: details.to.email,
             name: details.to.name
           }],
+          cc: details.cc,
+          bcc: details.bcc,
           dkim_domain: security.dkim_domain,
           dkim_selector: security.dkim_selector,
           dkim_private_key: security.dkim_private_key,

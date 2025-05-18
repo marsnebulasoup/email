@@ -2,18 +2,31 @@ export interface EmailDetails {
   from: {
     email: string,
     name: string,
-  }
+  },
   to: {
     email: string
     name: string
-  }
+  },
+  cc?: {
+    email: string,
+    name: string
+  }[],
+  bcc?: {
+    email: string,
+    name: string
+  }[],
   subject: string,
   bodyType: string; // e.g. text/html
   body: string,
   reply_to?: {
     email: string,
     name: string
-  }
+  },
+  attachments?: {
+    filename: string,
+    content: string,
+    type: string
+  }[],
 }
 
 export interface EmailSecurity {
@@ -24,8 +37,21 @@ export interface EmailSecurity {
 }
 
 export interface EmailRequest {
+  attachments?: {
+    filename: string,
+    content: string,
+    type: string
+  }[],
   personalizations: {
     to: {
+      email: string,
+      name: string
+    }[],
+    cc?: {
+      email: string,
+      name: string
+    }[],
+    bcc?: {
       email: string,
       name: string
     }[],
